@@ -1,0 +1,15 @@
+ <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Shadowverse戦績管理アプリ", root_path, id: "logo" %>
+            
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   root_path %></li>
+            <li><%= link_to "最新情報", '#' %></li>
+            <li><%= link_to "掲示板",  '#' %></li>
+            <li><%= link_to "マイページ", user_twitter_omniauth_authorize_path  %></li>
+         
+          </ul>
+        </nav>
+      </div>
+    </header>
