@@ -97,4 +97,18 @@ footer ul li {
 
 }
 
-
+.main_area{
+    text-align: center;
+    p{ 
+        color: #FFF;
+        font-size: 1.5em;
+        
+    }
+}
+.main_panel {
+   padding: 46px 0 0 0; /* メインパネル上部に46ピクセルの余白を設定 */
+   height: 400px; /* メインパネルの高さを400pxに設定 */
+   background:image-url('bg001.jpg') no-repeat center center;
+   /* 背景を中央寄せで繰り返しなしで設定 */
+   background-size: cover; /* 背景画像をフルスクリーンで表示 */
+}
