@@ -14,3 +14,30 @@
 
 <%= link_to '編集', edit_article_path(@article) %> |
 <%= link_to '戻る', articles_path %>
+
+
+<h2>コメント</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <%= comment.commenter %>: <%= comment.body %>
+    <%= link_to '削除', [comment.article, comment],
+               :confirm => 'よろしいですか？',
+               :method => :delete %>
+
+  </p>
+<% end %>
+
+<h2>コメントを書く</h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :commenter %>
+  </div>
+  <div class="field">
+    <%= f.label :内容 %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
