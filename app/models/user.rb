@@ -5,15 +5,24 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
          
   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+    
+    puts auth.except("extra")
+    
+    user = User.where(uid: auth.info.name, provider: auth.provider, email: "#{auth.uid}-#{auth.provider}@example.com").first
+    
+    if user != nil then
+      user.update(uid: auth.info.name, icon: auth.info.image, bio: auth.info.description)
+    end
 
     unless user
       user = User.create(
-        uid:      auth.uid,
+        uid:      auth.info.name,
         provider: auth.provider,
         email:    User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
-      )
+        password: Devise.friendly_token[0, 20],
+        icon: auth.info.image,
+        bio: auth.info.description
+     )
     end
 
     user

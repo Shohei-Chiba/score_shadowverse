@@ -1,8 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  def twitter
+   def twitter
     callback_from :twitter
-  end
+   end
 
   private
 

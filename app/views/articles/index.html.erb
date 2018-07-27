@@ -1,28 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <h1>掲示板</h1>
-
-<table>
+<table border="3" cellpadding="auto" cellspacing="auto" width="100%"height="auto">
+<div class="article_index">
+<div class="article_tytle">
   <thead>
     <tr>
       <th>タイトル</th>
-     
-      <th colspan="3"></th>
     </tr>
   </thead>
+</div>
 
+<td> 
+ <table>
   <tbody>
     <% @articles.each do |article| %>
       <tr>
        
-        <td><%= link_to article.title, article %></td>
+       <td> 
+        <li><%= link_to article.title, article %></li>
+       </td>
        
      
       </tr>
     <% end %>
   </tbody>
-</table>
+  </table>
+  </td>
+  
 
 <br>
-
+</div>
+</table>
 <%= link_to "新規作成", new_article_path %>

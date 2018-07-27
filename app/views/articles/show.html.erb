@@ -15,17 +15,18 @@
 <%= link_to '編集', edit_article_path(@article) %> |
 <%= link_to '戻る', articles_path %>
 
-
 <h2>コメント</h2>
 <% @article.comments.each do |comment| %>
   <p>
-    <%= comment.commenter %>: <%= comment.body %>
+   <%= comment.commenter %>: <%= comment.body %>
+    <%  if comment.user_id == current_user.id %>
     <%= link_to '削除', [comment.article, comment],
                :confirm => 'よろしいですか？',
                :method => :delete %>
-
+    <% end %>
   </p>
 <% end %>
+
 
 <h2>コメントを書く</h2>
 <%= form_for([@article, @article.comments.build]) do |f| %>
