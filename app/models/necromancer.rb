@@ -1,0 +1,2 @@
+class Necromancer < ApplicationRecord
+end
