@@ -1,4 +1,5 @@
-
-<%= image_tag(@user.icon.to_s)%>
-<%= @user.uid %>
-<%= @user.bio %>
+<div class="mypage" >
+    <%= @user.uid %>
+<p><%= image_tag(@user.icon.to_s, :size => "100x100")%></p>
+<p><%= @user.bio %></p>
+</div>
