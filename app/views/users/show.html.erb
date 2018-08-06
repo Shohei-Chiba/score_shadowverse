@@ -2,4 +2,10 @@
     <%= @user.uid %>
 <p><%= image_tag(@user.icon.to_s, :size => "100x100")%></p>
 <p><%= @user.bio %></p>
+
+<%= @results.each do |t| %>
+    <%= t.name%>
+    <%= t.pre_win%>
+    <%= t.post_win%>
+<% end %>
 </div>

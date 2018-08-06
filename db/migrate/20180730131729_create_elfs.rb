@@ -1,6 +1,6 @@
-class CreateNemeses < ActiveRecord::Migration[5.2]
+class CreateElfs < ActiveRecord::Migration[5.2]
   def change
-    create_table :nemeses do |t|
+    create_table :elfs do |t|
       t.integer :win
       t.integer :lose
 

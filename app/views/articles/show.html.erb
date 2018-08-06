@@ -15,6 +15,8 @@
 <%= link_to '編集', edit_article_path(@article) %> |
 <%= link_to '戻る', articles_path %>
 
+
+
 <h2>コメント</h2>
 <% @article.comments.each do |comment| %>
   <p>
@@ -42,3 +44,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+

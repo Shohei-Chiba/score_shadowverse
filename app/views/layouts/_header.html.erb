@@ -11,7 +11,7 @@
             <li><%= link_to "最新情報", '#' %></li>
             <% if user_signed_in? %>
             <li><%= link_to "掲示板",  articles_path %></li>
-            <li><%= link_to "マイページ", "users/show" %></li>
+            <li><%= link_to "マイページ", users_show_path(current_user.id) %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %> </li>
             <% end %>
           </div>

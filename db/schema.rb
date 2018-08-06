@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_132401) do
+ActiveRecord::Schema.define(version: 2018_08_06_130529) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2018_07_30_132401) do
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_bishops_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -43,13 +45,17 @@ ActiveRecord::Schema.define(version: 2018_07_30_132401) do
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_dragons_on_user_id"
   end
 
-  create_table "elves", force: :cascade do |t|
+  create_table "elfs", force: :cascade do |t|
     t.integer "win"
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_elfs_on_user_id"
   end
 
   create_table "necromancers", force: :cascade do |t|
@@ -57,13 +63,28 @@ ActiveRecord::Schema.define(version: 2018_07_30_132401) do
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_necromancers_on_user_id"
   end
 
-  create_table "nemeses", force: :cascade do |t|
+  create_table "nemesises", force: :cascade do |t|
     t.integer "win"
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_nemesises_on_user_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "pre_win"
+    t.integer "post_win"
+    t.integer "lose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "royals", force: :cascade do |t|
@@ -71,6 +92,8 @@ ActiveRecord::Schema.define(version: 2018_07_30_132401) do
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_royals_on_user_id"
   end
 
   create_table "samples", force: :cascade do |t|
@@ -105,6 +128,8 @@ ActiveRecord::Schema.define(version: 2018_07_30_132401) do
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_vampires_on_user_id"
   end
 
   create_table "witches", force: :cascade do |t|
@@ -112,6 +137,8 @@ ActiveRecord::Schema.define(version: 2018_07_30_132401) do
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_witches_on_user_id"
   end
 
 end
