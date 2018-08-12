@@ -1,7 +1,8 @@
 <div class="mypage" >
-    <%= @user.uid %>
-<p><%= image_tag(@user.icon.to_s, :size => "100x100")%></p>
+  <h2>  <%= @user.uid %> </h2>
+<%= image_tag(@user.icon.to_s, :size => "100x100")%>
 <p><%= @user.bio %></p>
+
 
 <%= @results.each do |t| %>
     <%= t.name%>
@@ -9,3 +10,5 @@
     <%= t.post_win%>
 <% end %>
 </div>
+
+ <%= render 'score' %>
