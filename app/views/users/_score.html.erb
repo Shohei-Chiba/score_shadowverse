@@ -6,12 +6,12 @@
  
  <thead>
     <tr>
-      <th>使用クラス </th>
+      <th>対戦相手のクラス</th>
       <th>対戦数</th>
       <th>勝利数</th>
+      <th>先攻勝利数</th>
+      <th>後攻勝利数</th>
       <th>勝率</th>
-      <th>先攻勝率</th>
-      <th>後攻勝率</th>
     </tr>
   </thead>
 
@@ -35,12 +35,6 @@
  
  <td> 
   <table>
-  <td><%= render 'percentage' %> </td>
-　</table>
- </td>
- 
- <td> 
-  <table>
   <td><%= render 'pre' %> </td>
 　</table>
  </td>
@@ -48,6 +42,12 @@
  <td> 
   <table>
   <td><%= render 'post' %> </td>
+　</table>
+ </td>
+ 
+ <td> 
+  <table>
+  <td><%= render 'percentage' %> </td>
 　</table>
  </td>
  
