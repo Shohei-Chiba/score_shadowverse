@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :articles do
   resources :comments
-end
+  end
+  resources :decks
   get 'users/show'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'test#index'

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>あなたのデッキ:</strong>
+  <%= @deck.mydeck %>
+</p>
+
+<p>
+  <strong>相手のデッキ:</strong>
+  <%= @deck.Opponentdeck %>
+</p>
+
+<p>
+  <strong>先攻後攻:</strong>
+  <%= @deck.Ahead %>
+</p>
+
+<p>
+  <strong>結果:</strong>
+  <%= @deck.result %>
+</p>
+
+<%= link_to 'Edit', edit_deck_path(@deck) %> |
+<%= link_to 'Back', decks_path %>

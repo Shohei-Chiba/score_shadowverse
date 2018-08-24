@@ -1,0 +1,37 @@
+<%= form_with(model: deck, local: true) do |form| %>
+  <% if deck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
+
+      <ul>
+      <% deck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :あなたのデッキ %>
+    <%= form.select :mydeck, [["エルフ", "エルフ"], ["ロイヤル", "ロイヤル"], ["ウィッチ", "ウィッチ"], ["ドラゴン", "ドラゴン"], ["ネクロマンサー", "ネクロマンサー"], ["ヴァンパイア", "ヴァンパイア"], ["ビショップ", "ビショップ"], ["ネメシス", "ネメシス"]]  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :相手のデッキ %>
+    <%= form.select :Opponentdeck , [["エルフ", "エルフ"], ["ロイヤル", "ロイヤル"], ["ウィッチ", "ウィッチ"], ["ドラゴン", "ドラゴン"], ["ネクロマンサー", "ネクロマンサー"], ["ヴァンパイア", "ヴァンパイア"], ["ビショップ", "ビショップ"], ["ネメシス", "ネメシス"]]  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :先攻後攻 %>
+    <%= form.select :Ahead , [["先攻", "先攻"], ["後攻", "後攻"]] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :勝敗 %>
+    <%= form.select :result , [["勝ち", "勝ち"], ["負け", "負け"]] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

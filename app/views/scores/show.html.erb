@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mydeck:</strong>
+  <%= @score.mydeck %>
+</p>
+
+<p>
+  <strong>Opponentdeck:</strong>
+  <%= @score.Opponentdeck %>
+</p>
+
+<p>
+  <strong>Ahead:</strong>
+  <%= @score.Ahead %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @score.result %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>

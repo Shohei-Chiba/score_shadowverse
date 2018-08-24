@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   def show
     
-    names =  ["[\"エルフ\"]", "[\"ロイヤル\"]", "[\"ウィッチ\"]" ,"[\"ドラゴン\"]", "[\"ネクロマンサー\"]", "[\"ヴァンパイア\"]", "[\"ビショップ\"]", "[\"ネメシス\"]"]
+    names =  ["エルフ", "ロイヤル", "ウィッチ" ,"ドラゴン", "ネクロマンサー", "ヴァンパイア", "ビショップ", "ネメシス"]
 
     @results = Hash.new
     
     @user = User.find(current_user.id)
+    
+    @t = Result.all
     
     count = 0
     
