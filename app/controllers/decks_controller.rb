@@ -4,7 +4,7 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-    @decks = Deck.all 
+    @decks = Deck.where(:user_id => current_user.id)
   end
 
   # GET /decks/1
@@ -15,6 +15,7 @@ class DecksController < ApplicationController
   # GET /decks/new
   def new
     @deck = Deck.new
+
   end
 
   # GET /decks/1/edit
@@ -25,12 +26,12 @@ class DecksController < ApplicationController
   # POST /decks.json
   def create
     @deck = Deck.new(deck_params)
-    
+    @deck.user_id = current_user.id
 
     respond_to do |format|
       if @deck.save
-        score(deck_params)
-        format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
+        score(deck_params,@deck.id)
+        format.html { redirect_to users_show_path(current_user.id), notice: 'Deck was successfully created.' }
         format.json { render :show, status: :created, location: @deck }
       else
         format.html { render :new }
@@ -44,6 +45,7 @@ class DecksController < ApplicationController
   def update
     respond_to do |format|
       if @deck.update(deck_params)
+        score_update(deck_params)
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
         format.json { render :show, status: :ok, location: @deck }
       else
@@ -56,6 +58,8 @@ class DecksController < ApplicationController
   # DELETE /decks/1
   # DELETE /decks/1.json
   def destroy
+    @result = Result.where(:deck_id => @deck.id)
+    Result.destroy(@result.ids)
     @deck.destroy
     respond_to do |format|
       format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
@@ -74,7 +78,7 @@ class DecksController < ApplicationController
       params.require(:deck).permit(:mydeck, :Opponentdeck, :Ahead, :result)
     end
     
-    def score(params)
+    def score(params,deck_id)
       
       pre_win = (params[:Ahead] == "先攻" && params[:result] == "勝ち") ? 1 : 0;
       post_win = (params[:Ahead] == "後攻" && params[:result] == "勝ち") ? 1 : 0; 
@@ -82,7 +86,20 @@ class DecksController < ApplicationController
       
       puts params[:Ahead]
       
-      @result = Result.new(:name => params[:mydeck], :user_id => current_user.id, :pre_win => pre_win, :post_win => post_win, :lose => lose)
+      @result = Result.new(:name => params[:mydeck], :user_id => current_user.id, :pre_win => pre_win, :post_win => post_win, :lose => lose,:deck_id => deck_id)
       @result.save!
     end
+    
+    def score_update(params)
+      pre_win = (params[:Ahead] == "先攻" && params[:result] == "勝ち") ? 1 : 0;
+      post_win = (params[:Ahead] == "後攻" && params[:result] == "勝ち") ? 1 : 0; 
+      lose = (params[:result] == "負け") ? 1 : 0;
+    puts "-------------------------------------"
+    @result = Result.where(:deck_id => params[:id]).each do |t|
+      puts t
+    end
+    puts "-------------------------------------"
+    @result.update!(:name => params[:mydeck], :pre_win => pre_win, :post_win => post_win, :lose => lose)
+    @result.save!
+    end  
 end

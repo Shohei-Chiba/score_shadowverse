@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_133356) do
+ActiveRecord::Schema.define(version: 2018_08_27_124210) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_133356) do
     t.string "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
   create_table "dragons", force: :cascade do |t|
@@ -93,6 +95,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_133356) do
     t.integer "lose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "deck_id"
+    t.index ["deck_id"], name: "index_results_on_deck_id"
     t.index ["user_id"], name: "index_results_on_user_id"
   end
 
