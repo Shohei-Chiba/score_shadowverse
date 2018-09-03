@@ -45,7 +45,7 @@ class DecksController < ApplicationController
   def update
     respond_to do |format|
       if @deck.update(deck_params)
-        score_update(deck_params)
+        score_update(deck_params, @deck.id)
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
         format.json { render :show, status: :ok, location: @deck }
       else
@@ -90,16 +90,11 @@ class DecksController < ApplicationController
       @result.save!
     end
     
-    def score_update(params)
+    def score_update(params, deck_id)
       pre_win = (params[:Ahead] == "先攻" && params[:result] == "勝ち") ? 1 : 0;
       post_win = (params[:Ahead] == "後攻" && params[:result] == "勝ち") ? 1 : 0; 
       lose = (params[:result] == "負け") ? 1 : 0;
-    puts "-------------------------------------"
-    @result = Result.where(:deck_id => params[:id]).each do |t|
-      puts t
-    end
-    puts "-------------------------------------"
-    @result.update!(:name => params[:mydeck], :pre_win => pre_win, :post_win => post_win, :lose => lose)
-    @result.save!
+      @result = Result.where(:deck_id => deck_id)
+      @result.update_all(:name => params[:mydeck], :pre_win => pre_win, :post_win => post_win, :lose => lose)
     end  
 end
