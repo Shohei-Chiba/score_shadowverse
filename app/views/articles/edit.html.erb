@@ -2,6 +2,6 @@
 
 <%= render 'form', article: @article %>
 
-<%= link_to '詳細', @article %> |
-<%= link_to '戻る', articles_path %>｜
-<%= link_to '削除', @article, method: :delete, data: { confirm: 'よろしいですか？' } %>
+<%= link_to '詳細', @article, class:"btn btn-primary btn-sm" %> |
+<%= link_to '戻る', articles_path, class:"btn btn-primary btn-sm" %>｜
+<%= link_to '削除', @article, class:"btn btn-danger btn-sm", method: :delete, data: { confirm: 'よろしいですか？' } %>

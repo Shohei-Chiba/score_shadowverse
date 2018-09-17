@@ -1,7 +1,8 @@
+
 <% @results.each do |key|%>
 <tbody>
       <tr>
-        <p><%= ((key[1][:pre_win].to_f + key[1][:post_win].to_f) / key[1][:count].to_f * 100.0).round(2) %></p>
+        <p><%= ((key[1][:pre_win].to_f + key[1][:post_win].to_f) / key[1][:count].to_f * 100.0).round(2) %>%</p>
       </tr>
 </tbody>
 <% end %>

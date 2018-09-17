@@ -20,9 +20,8 @@
         <td><%= deck.Opponentdeck %></td>
         <td><%= deck.Ahead %></td>
         <td><%= deck.result %></td>
-        <td><%= link_to 'Show', deck %></td>
-        <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-        <td><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '編集', edit_deck_path(deck), class:"btn btn-primary btn-xs"%></td>
+        <td><%= link_to '削除', deck, method: :delete, data: { confirm: 'よろしいですか？' }, class:"btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Deck', new_deck_path %>
+<%= link_to '新規登録', new_deck_path, class:"btn btn-primary btn-sm" %>

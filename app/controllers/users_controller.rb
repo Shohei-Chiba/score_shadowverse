@@ -30,4 +30,5 @@ class UsersController < ApplicationController
       @score[deck.to_s] = {:win => 0, :lose => 0}
     end
   end
+  
 end

@@ -25,10 +25,10 @@
   
   <div class="field">
     <%= form.label :カテゴリー %>
-    <%= form.select :category, ["マッチング", "フレンド募集", "チームマッチング", "雑談"] %>
+    <%= form.select :category, ["ルームマッチ", "フレンド募集","チームメンバー募集", "対抗戦", "雑談"] %>
   </div>
 
   <div class="actions">
-    <%= form.submit(["登録",:neme]) %>
+    <%= form.submit "登録" %>
   </div>
 <% end %>
