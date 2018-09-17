@@ -22,6 +22,11 @@
     <%= form.text_area :memo %>
   </div>
   </div>
+  
+  <div class="field">
+    <%= form.label :カテゴリー %>
+    <%= form.select :category, ["マッチング", "フレンド募集", "チームマッチング", "雑談"] %>
+  </div>
 
   <div class="actions">
     <%= form.submit(["登録",:neme]) %>
