@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<%= search_form_for @search do |f| %>
+  <div class="form-group">
+    <%= f.label :memo_cont, "memo" %>
+    <%= f.text_field :memo_cont, class: "form-control" %>
+    <%= f.label :category_cont, "カテゴリー"%>
+    <%= f.select(:category_eq, ["マッチング", "フレンド募集", "チームマッチング", "雑談"], include_blank: true)%>
+  </div>
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
+
 <h1>掲示板</h1>
 <table border="3" cellpadding="auto" cellspacing="auto" width="100%"height="auto">
 <div class="article_index">
@@ -33,3 +43,4 @@
 </div>
 </table>
 <%= link_to "新規作成", new_article_path %>
+ <%= paginate @articles %>

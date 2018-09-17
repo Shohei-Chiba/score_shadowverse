@@ -1,10 +1,18 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+ PER=10
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @search = Article.search(params[:q])
+    
+    if @search.result.class == nil then
+      @articles = Article.all.page(params[:page]).per(PER)
+
+    else
+      @articles = @search.result.page(params[:page]).per(PER)
+
+    end
   end
 
   # GET /articles/1
