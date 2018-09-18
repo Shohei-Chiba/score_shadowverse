@@ -29,7 +29,10 @@
         <td><%= @score[d.to_s][:win] + @score[d.to_s][:lose] %></td>
         <td><%= @score[d.to_s][:win]  %></td>
         <td><%= @score[d.to_s][:lose]  %></td>
+        <td><%= @score[d.to_s][:win].to_f / (@score[d.to_s][:win].to_f + @score[d.to_s][:lose].to_f) * 100.round %>%</td> 
     </tr>
     <% end %>
+
 </tbody>
 </table>
+<%= link_to "戻る", users_show_path(current_user.id),class:"btn btn-primary btn-sm align:center" %>

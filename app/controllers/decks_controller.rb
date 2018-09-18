@@ -82,19 +82,21 @@ class DecksController < ApplicationController
       
       pre_win = (params[:Ahead] == "先攻" && params[:result] == "勝ち") ? 1 : 0;
       post_win = (params[:Ahead] == "後攻" && params[:result] == "勝ち") ? 1 : 0; 
-      lose = (params[:result] == "負け") ? 1 : 0;
+      pre_lose = (params[:Ahead] == "先攻" && params[:result] == "負け") ? 1 : 0;
+      post_lose = (params[:Ahead] == "後攻" && params[:result] == "負け") ? 1 : 0;
       
       puts params[:Ahead]
       
-      @result = Result.new(:name => params[:mydeck], :user_id => current_user.id, :pre_win => pre_win, :post_win => post_win, :lose => lose,:deck_id => deck_id)
+      @result = Result.new(:name => params[:mydeck], :user_id => current_user.id, :pre_win => pre_win, :post_win => post_win, :pre_lose => pre_lose, :post_lose => post_lose, :deck_id => deck_id)
       @result.save!
     end
     
     def score_update(params, deck_id)
       pre_win = (params[:Ahead] == "先攻" && params[:result] == "勝ち") ? 1 : 0;
       post_win = (params[:Ahead] == "後攻" && params[:result] == "勝ち") ? 1 : 0; 
-      lose = (params[:result] == "負け") ? 1 : 0;
+      pre_lose = (params[:Ahead] == "先攻" && params[:result] == "負け") ? 1 : 0;
+      post_lose = (params[:Ahead] == "後攻" && params[:result] == "負け") ? 1 : 0;
       @result = Result.where(:deck_id => deck_id)
-      @result.update_all(:name => params[:mydeck], :pre_win => pre_win, :post_win => post_win, :lose => lose)
+      @result.update_all(:name => params[:mydeck], :pre_win => pre_win, :post_win => post_win, :pre_lose => pre_lose, :post_lose => post_lose)
     end  
 end

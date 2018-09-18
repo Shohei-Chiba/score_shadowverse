@@ -9,11 +9,15 @@ class Result < ApplicationRecord
         sum(:post_win)
     end
   
-    def self.sum_loose  
-        sum(:lose)
+    def self.sum_post_lose  
+        sum(:post_lose)
+    end
+    
+    def self.sum_pre_lose  
+        sum(:pre_lose)
     end
     
     def self.sum_battle_count
-        sum(:pre_win) + sum(:post_win) + sum(:lose)
+        sum(:pre_win) + sum(:post_win) + sum(:pre_lose) + sum(:post_lose)
     end
 end

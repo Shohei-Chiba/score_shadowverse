@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
-    @article.memo = "-【フォーマット】\n※いずれかを残して削除してください\n・ローテーション\n・アンリミテッド\n・2Pick\n\n【ルームID】\n・\n【ひとこと】\n・ガチ対戦希望です。3戦お願いします。\n（※「相互リタイア」「顔合わせ（自傷）」の募集については専用の掲示板がありますので、そちらをご利用ください）\n"
+  
   end
 
   # GET /articles/1/edit

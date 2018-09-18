@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     
     names.each do |name|
       @e = Result.where(:user_id => current_user.id, :name => name) 
-      @results[count]  = {:pre_win => @e.sum_pre_win, :post_win => @e.sum_post_win, :lose => @e.sum_loose, :count => @e.sum_battle_count }
+      @results[count]  = {:pre_win => @e.sum_pre_win, :post_win => @e.sum_post_win, :pre_lose => @e.sum_pre_lose, :post_lose => @e.sum_post_lose,:count => @e.sum_battle_count }
       count += 1
     end
   end
@@ -30,5 +30,6 @@ class UsersController < ApplicationController
       @score[deck.to_s] = {:win => 0, :lose => 0}
     end
   end
+  
   
 end

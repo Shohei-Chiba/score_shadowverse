@@ -2,5 +2,5 @@
 
 <%= render 'form', deck: @deck %>
 
-<%= link_to '詳細', @deck, class:"btn btn-primary btn-sm" %> |
-<%= link_to '戻る', decks_path , class:"btn btn-primary btn-sm"%>
+<%= link_to "戦績一覧", users_show_path(current_user.id), class:"btn btn-primary btn-xs" %> |
+<%= link_to '戻る', decks_path , class:"btn btn-primary btn-xs"%>
