@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @search = Article.search(params[:q])
+   
+    @search = Article.order(created_at: :desc).search(params[:q])
     
     if @search.result.class == nil then
       @articles = Article.all.page(params[:page]).per(PER)
