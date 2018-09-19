@@ -11,36 +11,34 @@
 <% end %>
 
 <h1>掲示板</h1>
-<table border="3" align="center" cellpadding="auto" cellspacing="auto" width="50%"height="auto">
-<div class="article_index">
-<div class="article_tytle">
-  <thead>
-    <tr>
-      <th>タイトル</th>
-    </tr>
-  </thead>
-</div>
+<div class="box5">
+<table  border="3" align="center" cellpadding="auto" cellspacing="auto" width="50%"height="auto">
 
-<td> 
- <table>
+  
+    <tr>
+      <th colspan="2">タイトル</th>
+         
+    </tr>
+  
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-       
-       <td> 
-        <li><%= link_to article.title, article %></li>
+
+       <td style="border-style: none;"> 
+        ・<%= link_to article.title, article %>
        </td>
-       
-     
+    
+        <% date = article.created_at.in_time_zone('Asia/Tokyo') %>
+      <td align="right" style="border-style: none;" >
+        <%= "#{date.year}年 #{date.mon}月 #{date.day}日" %> 
+      </td>
+    
       </tr>
     <% end %>
+    
   </tbody>
-  </table>
-  </td>
-  
 
-<br>
-</div>
 </table>
+
 <%= link_to "新規作成", new_article_path, class:"btn btn-primary" %>
  <%= paginate @articles %>

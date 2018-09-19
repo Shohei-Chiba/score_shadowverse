@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>タイトル:</strong>
-  <%= @article.title %>
+  [<%= @article.title %>] 
 </p>
 
 <p>
-  <strong>内容:</strong>
-  <%= @article.memo %>
+  <%= simple_format(@article.memo) %>
 </p>
 
 <%  if @article.user_id == current_user.id %>
@@ -20,7 +18,7 @@
 <h2>コメント</h2>
 <% @article.comments.each do |comment| %>
   <p>
-   <%= comment.commenter %>: <%= comment.body %>
+   [<%= comment.commenter %>] <%= simple_format(comment.body) %>
     <%  if comment.user_id == current_user.id %>
     <%= link_to '削除', [comment.article, comment],class:"btn btn-danger btn-xs",
                :confirm => 'よろしいですか？',
