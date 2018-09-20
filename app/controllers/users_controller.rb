@@ -3,7 +3,10 @@ class UsersController < ApplicationController
     
     names =  ["エルフ", "ロイヤル", "ウィッチ" ,"ドラゴン", "ネクロマンサー", "ヴァンパイア", "ビショップ", "ネメシス"]
 
+
     @results = Hash.new
+ 
+      
     
     @user = User.find(current_user.id)
     
@@ -31,5 +34,5 @@ class UsersController < ApplicationController
     end
   end
   
-  
+    
 end

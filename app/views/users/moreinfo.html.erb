@@ -29,7 +29,12 @@
         <td><%= @score[d.to_s][:win] + @score[d.to_s][:lose] %></td>
         <td><%= @score[d.to_s][:win]  %></td>
         <td><%= @score[d.to_s][:lose]  %></td>
-        <td><%= @score[d.to_s][:win].to_f / (@score[d.to_s][:win].to_f + @score[d.to_s][:lose].to_f) * 100.round %>%</td> 
+        <td><% if @score[d.to_s][:win].to_f + @score[d.to_s][:lose].to_f > 0 %>
+            <%= (@score[d.to_s][:win].to_f / (@score[d.to_s][:win].to_f + @score[d.to_s][:lose].to_f) * 100).round %>%
+            <% else %>
+            0%
+            <% end %>
+            </td> 
     </tr>
     <% end %>
 

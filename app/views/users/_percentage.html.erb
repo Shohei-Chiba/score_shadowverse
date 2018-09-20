@@ -1,8 +1,14 @@
 
 <% @results.each do |key|%>
+
 <tbody>
+  
       <tr>
+          <% if key[1][:count].to_f > 0 %>
         <p><%= ((key[1][:pre_win].to_f + key[1][:post_win].to_f) / key[1][:count].to_f * 100.0).round %>%</p>
+          <% else %>
+          <p>0%</p>
+         <% end %>
       </tr>
 </tbody>
 <% end %>
