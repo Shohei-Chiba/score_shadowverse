@@ -28,7 +28,7 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.save
-        format.html { redirect_to @score, notice: 'Score was successfully created.' }
+        format.html { redirect_to @score, notice: '記録されました' }
         format.json { render :show, status: :created, location: @score }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ScoresController < ApplicationController
   def update
     respond_to do |format|
       if @score.update(score_params)
-        format.html { redirect_to @score, notice: 'Score was successfully updated.' }
+        format.html { redirect_to @score, notice: '更新されました' }
         format.json { render :show, status: :ok, location: @score }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ScoresController < ApplicationController
   def destroy
     @score.destroy
     respond_to do |format|
-      format.html { redirect_to scores_url, notice: 'Score was successfully destroyed.' }
+      format.html { redirect_to scores_url, notice:'削除されました' }
       format.json { head :no_content }
     end
   end

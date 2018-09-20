@@ -31,7 +31,7 @@ class DecksController < ApplicationController
     respond_to do |format|
       if @deck.save
         score(deck_params,@deck.id)
-        format.html { redirect_to users_show_path(current_user.id), notice: 'Deck was successfully created.' }
+        format.html { redirect_to users_show_path(current_user.id) }
         format.json { render :show, status: :created, location: @deck }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class DecksController < ApplicationController
     respond_to do |format|
       if @deck.update(deck_params)
         score_update(deck_params, @deck.id)
-        format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
+        format.html { redirect_to @deck, notice: '更新されました' }
         format.json { render :show, status: :ok, location: @deck }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class DecksController < ApplicationController
     Result.destroy(@result.ids)
     @deck.destroy
     respond_to do |format|
-      format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
+      format.html { redirect_to decks_url, notice: '削除されました' }
       format.json { head :no_content }
     end
   end

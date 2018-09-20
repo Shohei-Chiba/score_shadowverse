@@ -6,6 +6,8 @@
 
 <% if !user_signed_in? %>
 <%= link_to "ログイン", user_twitter_omniauth_authorize_path, class: "btn btn-lg btn-success  " %>
+<% else %>
+<%= link_to "マイページ", users_show_path(current_user.id), class: "btn btn-lg btn-success  " %>
 <% end %>
 
 </div>
