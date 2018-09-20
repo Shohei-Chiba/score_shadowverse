@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
 validates :memo,  :presence => true
-validates :title, :presence => true, :length => { :minimum => 5 }
+validates :title, :presence => true
+
  
   has_many :comments
 
