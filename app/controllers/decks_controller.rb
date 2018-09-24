@@ -66,7 +66,14 @@ class DecksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def destroy_all_deck
+    puts params
+    Deck.destroy(Deck.where(:user_id => current_user.id, :mydeck => params[:format]).ids)
+    Result.destroy(Result.where(:user_id => current_user.id, :name => params[:format]).ids)
+    redirect_to users_show_path
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deck

@@ -40,4 +40,5 @@
 
 </tbody>
 </table>
-<%= link_to "戻る", users_show_path(current_user.id),class:"btn btn-primary btn-sm align:center" %>
+<%= link_to "戻る", users_show_path(current_user.id),class:"btn btn-primary btn-sm align:center" %> |
+<%= link_to "一括削除", decks_path(@name), method: :delete, data: {:confirm => "本当に全ての戦績を削除しますか？"} ,class:"btn btn-danger btn-sm align:center" %>
