@@ -87,3 +87,5 @@ gem 'kaminari-bootstrap'
 gem 'rails-i18n'
 
 gem 'carrierwave'
+
+gem "serviceworker-rails"
