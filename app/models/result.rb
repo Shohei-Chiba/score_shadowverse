@@ -1,6 +1,6 @@
 class Result < ApplicationRecord
   belongs_to :user
-  
+  belongs_to :decks
     def self.sum_pre_win  
         sum(:pre_win)
     end
